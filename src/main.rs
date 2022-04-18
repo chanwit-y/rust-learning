@@ -1,3 +1,7 @@
+#![warn(unused_variables)]
+#![warn(unused_assignments)]
+#![warn(dead_code)]
+
 fn main() {
     let mut x: i32;
     x = 10;
@@ -17,5 +21,56 @@ fn main() {
     //Array
     let x: [i32; 5];
     let x = [1, 2, 3, 4, 5];
-    let x = [0;5];
+    let x = [0; 5];
+
+    //if
+    let score = 50;
+    let mut grade = "";
+    if score >= 80 {
+        grade = "A";
+    } else if score >= 70 {
+        grade = "B";
+    } else if score >= 60 {
+        grade = "C";
+    } else if score >= 50 {
+        grade = "D";
+    } else {
+        grade = "F"
+    }
+
+    let grade = if score >= 80 {
+        "A"
+    } else if score >= 70 {
+        "B"
+    } else if score >= 60 {
+        "C"
+    } else if score >= 50 {
+        "D"
+    } else {
+        "F"
+    };
+
+    // Condition || Ternary
+    let result = if score >= 50 { "Pass" } else { "Fail" };
+
+    // Loop
+    while true {
+        break;
+    }
+
+    // เหมือนกับ while true
+    // ตั้งชื่อเป็น label1
+    'label1: loop {
+        'label2: loop {
+            continue 'label2;
+            break 'label1;
+        }
+    }
+}
+
+// -> i32 ประกาศว่าจะ return i32
+fn get_number() -> i32 {
+    let a = 10;
+    let b = 20;
+    a + b // return แบบ tail expressions
 }
