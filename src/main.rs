@@ -1,6 +1,3 @@
-#![warn(unused_variables)]
-#![warn(unused_assignments)]
-#![warn(dead_code)]
 
 fn main() {
     let mut x: i32;
@@ -22,6 +19,8 @@ fn main() {
     let x: [i32; 5];
     let x = [1, 2, 3, 4, 5];
     let x = [0; 5];
+
+    let a = get_number();
 
     //if
     let score = 50;
@@ -62,9 +61,14 @@ fn main() {
     // ตั้งชื่อเป็น label1
     'label1: loop {
         'label2: loop {
-            continue 'label2;
             break 'label1;
+            continue 'label2;
         }
+    }
+
+    // i = 0 i < 10 i++
+    for i in 0..10 {
+        println!("{}", i);
     }
 }
 
