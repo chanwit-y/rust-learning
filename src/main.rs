@@ -1,13 +1,6 @@
-#[repr(u8)]
-enum Bar {
-    A,
-    B,
-    C = 10,
-    D,
-}
+mod demo;
 
 fn main() {
-    let x = Bar::C as u8;
-    let x2 = format!("{:?}", x);
-    println!("{}", x2);
+    demo::hi_rc_weak();
+    println!("");
 }
