@@ -5,7 +5,7 @@ use std::{
     rc::{Rc, Weak},
 };
 
-pub fn example_1() {
+pub fn demo_downgrade_get_weak() {
     let strong = Rc::new("hello".to_string());
     let weak = Rc::downgrade(&strong);
 
@@ -16,16 +16,15 @@ pub fn example_1() {
     assert_eq!("hello", unsafe { &*weak.as_ptr() });
 }
 
-pub fn example_2() {
+pub fn demo_into_raw() {
     let strong = Rc::new("hello".to_owned());
     let weak = Rc::downgrade(&strong);
-    let raw = weak.into_raw();
 
-    add_referent_counter(Rc::clone(&strong));
+    let raw = weak.into_raw();
+    drop(unsafe {Weak::from_raw(raw)});
+    println!("count weak: {:?}", Rc::weak_count(&strong));
+    println!("count strong: {:?}", Rc::strong_count(&strong));
 
     println!("{:?}", unsafe { &*raw });
 }
 
-fn add_referent_counter(s: Rc<String>) {
-    println!("count: {:?}", Rc::weak_count(&s));
-}
