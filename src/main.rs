@@ -1,7 +1,13 @@
-fn main() {
-    println!("{}", calculate_weight_on_mars(2.0));
+#[repr(u8)]
+enum Bar {
+    A,
+    B,
+    C = 10,
+    D,
 }
 
-fn calculate_weight_on_mars(weight: f32) -> f32 {
-    (weight / 0.81) * 50.0
+fn main() {
+    let x = Bar::C as u8;
+    let x2 = format!("{:?}", x);
+    println!("{}", x2);
 }
